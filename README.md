@@ -2,10 +2,10 @@
 </p>
 
 
-An Advanced Server Engine For Minecraft PE
+**An Advanced Server Engine For Minecraft PE**
 
 # Features:
-- DarkSystem is # 1 about no lagging. (We think so)
+- DarkSystem is **# 1** about no lagging. (We think so)
 - Fast chunk loading
 - MobAI Support
 - Smooth Movement
