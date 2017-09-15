@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/DarkYusuf13/DarkSystem/banner.png">
+<img src="https://raw.githubusercontent.com/DarkYusuf13/DarkSystem/master/banner.png">
 </p>
 
 
