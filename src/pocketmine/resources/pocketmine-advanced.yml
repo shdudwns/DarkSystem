@@ -1,0 +1,49 @@
+#______           _    _____           _                  
+#|  _  \         | |  /  ___|         | |                 
+#| | | |__ _ _ __| | _\ `--. _   _ ___| |_ ___ _ __ ___   
+#| | | / _` | '__| |/ /`--. \ | | / __| __/ _ \ '_ ` _ \  
+#| |/ / (_| | |  |   </\__/ / |_| \__ \ ||  __/ | | | | | 
+#|___/ \__,_|_|  |_|\_\____/ \__, |___/\__\___|_| |_| |_| 
+#                             __/ |                       
+#                            |___/
+main:
+ #Sunucu Lobi Dünya İsmi (Klasör İsmi)
+ lobi-dunyasi: world
+ 
+mesajlar:
+ #Bilinmeyen Bir Komut Yazıldığında Gösterilecek Mesaj
+ bilinmeyen-komut: "Sunucumuzda Böyle Bir Komut Yok!"
+ 
+komutlar:
+ #/operator (OP) Komutunu Aktif Eder
+ operator-komutu: true
+ 
+inventory:
+ #Envanter Boyutu
+ max-slot: 32
+ #Envanter Stack Boyutu
+ max-stack: 64
+ #Öldüğünde Envanteri Koru
+ keep: false
+ 
+troll:
+ #Sandık Açıldığında Creeper Sesi Çıkarır
+ chest-sound: false
+ 
+fun:
+ ########/PIZZA/########
+ #Pizzalar Aktif Olsun mu?
+ pizza: true
+ #Pizza Markası (dominos, crackers, little_caesars, pizza_hut, pizza_sbarro)
+ pizza-mark: dominos
+ #Pizza Yenildiğinde Giderdiği Açlık (1 = 1 Bar)
+ pizza-hunger: 3
+ ########/SILAHLAR/########
+ #Silah Sistemi Aktif Olsun mu?
+ weapons: true
+ #Silahların Verdiği Hasar (1 = 1 Kalp)
+ weapons-damage: 4
+ #Silahlar
+ #Ak-47: ID
+ #P90: ID
+ 

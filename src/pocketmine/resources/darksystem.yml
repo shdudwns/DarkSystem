@@ -1,0 +1,197 @@
+#______           _    _____           _                  
+#|  _  \         | |  /  ___|         | |                 
+#| | | |__ _ _ __| | _\ `--. _   _ ___| |_ ___ _ __ ___   
+#| | | / _` | '__| |/ /`--. \ | | / __| __/ _ \ '_ ` _ \  
+#| |/ / (_| | |  |   </\__/ / |_| \__ \ ||  __/ | | | | | 
+#|___/ \__,_|_|  |_|\_\____/ \__, |___/\__\___|_| |_| |_| 
+#                             __/ |                       
+#                            |___/
+
+#Dosya Sürümü
+config:
+ version: 22
+
+level:
+ #Hava Durumu
+ weather: false
+ #Weather random duration
+ weather-random-duration-min: 6000
+ weather-random-duration-max: 12000
+ #Rastgele Yıldırım Süresi, Varsayılan 10s, 0 = Devredışı
+ lightning-time: 0
+ #Yıldırım Alevi
+ lightning-fire: false
+ #Yıldırım Patlaması
+ fire-spread: false
+ 
+player:
+ #Açlık Sistemi
+ hunger: true
+ #Açlık Tarafından Verilen Hasar
+ hunger-health: 10
+ #Açlık Zamanlayıcı, Varsayılan: 80=4s
+ hunger-timer: 3000
+ #Seviye Sistemi
+ experience: true
+ #Ölünce Envanteri Koru
+ keep-inventory: false
+ #Oyun Modu Değişiminde Envanterin Temizlenmesi
+ auto-clear-inventory: true
+ #Ölünce Seviyeyi Koru
+ keep-experience: false
+ #Görüş Mesafesi (Not: Lütfen 10'un Altında Seçiniz! -1=Devredışı)
+ chunk-radius: 3
+
+nether:
+ #Cehennem Sistemi
+ allow-nether: false
+ #Cehennem Dünyası'nın İsmi
+ level-name: "cehennem"
+ #End Sistemi
+ allow-end: false
+ #End Dünyası'nın İsmi
+ end-level-name: "end"
+ 
+server:
+ #Bilgi Üretimi, 0=Devredışı
+ experience-cache: 65535
+ #Demir Golem
+ allow-iron-golem: false
+ #Kar Golemi
+ allow-snow-golem: false
+ #kayit.log Dosyasını Devredışı Bırak
+ disable-log: true
+ #Uçma Koruması
+ anti-fly: true
+ #Görüş Mesafesi İsteği
+ async-chunk-request: true
+ #Oyuncu Girdiğinde Uyarı Ver
+ #0 = Mesaj, 1 = Tip, 2 = Popup
+ player-msg-type: 0
+ login-msg: "§e@oyuncu Oyuna Katıldı"
+ logout-msg: "§e@oyuncu Oyundan Ayrıldı"
+ #Çalışma Masası Eşyalarını Dosyalardan Al
+ recipes-from-json: false
+ #Yaratıcı Modu Eşyalarını Dosyalardan Al
+ creative-items-from-json: false
+ #Choose if enable movement check (no more pull back)
+ check-movement: true
+ #Set if enable limited creative (cannot drop item, cannot interact Chests and so on)
+ limited-creative: false
+ #Set if add DestroyBlockParticle
+ destroy-block-particle: false
+ #Set if enable splash potion
+ allow-splash-potion: true
+ #Set if enable advanced Command Selector
+ advanced-command-selector: false
+ #Hayvanlar Hareket Etsinler mi?
+ entity-ai-enabled: false
+ #Kızıltaş Sistemi
+ redstone-enable: false
+  #Mob Ayarları
+ spawn-animals: false
+ #
+ animals-limit: 0
+ #
+ spawn-mobs: false
+ #
+ mobs-limit: 0
+ 
+anticheat:
+ #This setting decides if the system tracks the movement speed and position of everyone in game, it will see if it is good or bad
+ #Recommended that it stays "true", but set it to "false" if it bugs out players that do not use modifiers
+ check-movement: true
+ #This setting decides if instant breaking by modifiers is allowed or not
+ #Recommended that it stays "false"
+ allow-instabreak: false
+ #This setting decides if flying will be detected/tracked or not
+ #Recommended it is set to "true", but sst it to "false" if it bugs out players that do not use modifiers
+ anti-fly: true
+ 
+enchantment:
+ #Choose if anvil is allowed
+ enable-anvil: true
+ #Choose if EnchantingTable is allowed
+ enable-enchanting-table: true
+ #Choose if to count bookshelves, may cause server lag.
+ #If this option is false, server will use a random count (0~15)
+ count-bookshelf: false
+
+redstone:
+ # Kızıltaş Sistemi
+ enable: true
+ #Gelişmiş Ayar
+ frequency-pulse: false
+ #Gelişmiş Ayar
+ pulse-frequency: 1
+
+synapse:
+ #Geliştirici Ayarları
+ enabled: false
+ server-ip: 127.0.0.1
+ server-port: 10305
+ #Eğer Bu Sunucu Ana Sunucuysa "true" Yapın!
+ is-main-server: true
+ server-password: 34sifre34
+ #Açıklama
+ description: "Synapse Sunucusu"
+ #RakLib Ayarları
+ disable-rak: false
+
+dserver:
+ #The count of all multi-server unified
+ enable: false
+ #Query update automatically
+ query-auto-update: false
+ #Query update periodical
+ query-tick-update: true
+ #The max players' number of Motd
+ motd-max-players: 0
+ #The max players' number of query，0=Default
+ query-max-players: 0
+ #Show the number of all players on motd
+ motd-all-players: false
+ #Show the number of all players on Query
+ query-all-players: false
+ #Show the number of online players on motd
+ motd-players: false
+ #Show the number of online players on Query
+ query-players: false
+ #Update Frequency ,20=1s
+ time: 40
+ #Auto-retry times when failed
+ retry-times: 3
+ #the server list，Separate by ';'，e.g. 1.example.com:19132;2.example.com:19133
+ server-list: ""
+ 
+ai:
+ #Yaratık Ayarları
+ enable: false
+ #Zombi Ayarları，0=Devredışı，1=AI 1.0
+ zombie: 0
+ #Zombi Domuz Adam
+ pigzombie: false
+ #İnek
+ cow: false
+ #Tavuk
+ chicken: false
+ #Koyun
+ sheep: false
+ #Domuz
+ pig: false
+ #Skeleton's AI
+ skeleton: false
+ #Creeper's AI
+ creeper: false
+ #Iron golem's AI
+ iron-golem: false
+ #Snow golem's AI 
+ snow-golem: false
+ #Creeper Patladığında Blokları Patlat
+ creeper-explode-destroy-block: false
+ #Otomatik Yaratık Çağırma
+ mobgenerate: false
+ 
+inventory:
+ #Hileleri Aktif Et
+ allow-cheats: false
