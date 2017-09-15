@@ -11,7 +11,15 @@
 - Smooth Movement
 - Colored Console
 - More Commands (/clear, /tpall, /clearchat etc.)
+- Advanced Config **(pocketmine_advanced.yml)**
 - DarkBot (Virtual Bot; Can talk, help players, can move etc.)
+
+# TODO List:
+- [ ] **Command Block**
+- [ ] **Experience System (working)**
+- [ ] **Map**
+- [ ] **Horse**
+- [ ] **Throwing Potions**
 
 # Known Bugs:
 - When DarkSystem crash, server does not stop.
@@ -20,8 +28,9 @@
 
 # Notes:
 - DarkSystem's language is currently Turkish, but You can choose it from pocketmine.yml (Support +30 Languages)
-- A lots of plugins are not  compatible with DarkSystem, Because DarkSystem uses different NBT System, ex. CompoundTag -> Compound.
+- Some plugins are not compatible with DarkSystem, Because DarkSystem uses different NBT System, ex. CompoundTag -> Compound.
 - DarkSystem is not stable now. Will be in future
+- /op command renamed to /operator and you can enable/disable in **pocketmine_advanced.yml**.
 
 # License:
 ```
