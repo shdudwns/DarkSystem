@@ -2,8 +2,6 @@
 </p>
 
 
-# DarkSystem
-
 An Advanced Server Engine For Minecraft PE
 
 # Features:
