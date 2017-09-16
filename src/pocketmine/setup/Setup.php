@@ -39,19 +39,19 @@ class Setup{
 	public function __construct(){
 		echo "[*] DarkSystem Kurulumu\n";
 		echo "[*] Lütfen Bir Dil Seçiniz:\n";
-		foreach(InstallerLang::$languages as $short => $native){
+		foreach(SetupLanguage::$languages as $short => $native){
 			echo " $native => $short\n";
 		}
 		do{
 			echo "[?] Dil (tur): ";
 			$lang = strtolower($this->getInput("tur"));
-			if(!isset(InstallerLang::$languages[$lang])){
+			if(!isset(SetupLanguage::$languages[$lang])){
 				echo "[!] Dil Bulunamadı!\n";
 				$lang = false;
 			}
 			$this->defaultLang = $lang;
 		}while($lang == false);
-		$this->lang = new InstallerLang($lang);
+		$this->lang = new SetupLanguage($lang);
 		
 		echo "[*] " . $this->lang->language_has_been_selected . "\n";
 
