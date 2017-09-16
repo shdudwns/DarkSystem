@@ -222,13 +222,13 @@ class Dispenser extends Spawnable implements InventoryHolder, Container, Nameabl
 				case Item::EGG:
 					$entity = Entity::createEntity("Egg", $this->getLevel(), $nbt);
 					break;
-				case Item::SPLASH_POTION:
+				/*case Item::SPLASH_POTION:
 					$nbt->PotionId = new ShortTag("PotionId", $item->getDamage());
 					$entity = Entity::createEntity("ThrownPotion", $this->getLevel(), $nbt);
 					break;
 				case Item::ENCHANTING_BOTTLE:
 					$entity = Entity::createEntity("ThrownExpBottle", $this->getLevel(), $nbt);
-					break;
+					break;*/
 				default:
 					$nbt->Health = new ShortTag("Health", 5);
 					$nbt->Item = $needItem->nbtSerialize(-1, "Item");
