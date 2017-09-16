@@ -60,7 +60,7 @@ namespace pocketmine{
 	use pocketmine\utils\Utils;
 	use pocketmine\setup\Setup;
 
-	const VERSION = "1.8.6";
+	const VERSION = "1.9.0";
 	const DARKBOT_VERSION = "1.0.0";
 	const API_VERSION = "3.0.1";
 	const TAG = "Platinum";
