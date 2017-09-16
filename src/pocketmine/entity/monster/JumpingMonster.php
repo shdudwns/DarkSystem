@@ -89,7 +89,7 @@ abstract class JumpingMonster extends JumpingEntity implements Monster{
         }
     }
 
-    public function onUpdate(int $currentTick): bool {
+    public function onUpdate($currentTick){
         if ($this->server->getDifficulty() < 1) {
             $this->close();
             return false;
@@ -132,7 +132,7 @@ abstract class JumpingMonster extends JumpingEntity implements Monster{
         return true;
     }
 
-    public function entityBaseTick(int $tickDiff = 1): bool {
+    public function entityBaseTick($tickDiff = 1): bool {
         Timings::$timerEntityBaseTick->startTiming();
 
         $hasUpdate = parent::entityBaseTick($tickDiff);

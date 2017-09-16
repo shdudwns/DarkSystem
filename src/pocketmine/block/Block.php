@@ -557,7 +557,7 @@ class Block extends Position implements Metadatable{
 			Block::$list[Block::REDSTONE_LAMP] = RedstoneLamp::class;
 			Block::$list[Block::REDSTONE_LAMP_ACTIVE] = RedstoneLampActive::class;
 			//Block::$list[Block::POWERED_REPEATER_BLOCK] = PoweredRepeater::class;
-			//$Block::$list[Block::UNPOWERED_REPEATER_BLOCK] = UnpoweredRepeater::class;
+			//Block::$list[Block::UNPOWERED_REPEATER_BLOCK] = UnpoweredRepeater::class;
 			
 			Block::$list[Block::REDSTONE_TORCH] = RedstoneTorch::class;
 			Block::$list[Block::REDSTONE_TORCH_ACTIVE] = RedstoneTorchActive::class;

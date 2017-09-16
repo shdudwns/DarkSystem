@@ -37,7 +37,7 @@ class Slime extends JumpingMonster{
         if($this->attackDelay > 10 && $this->distanceSquared($player) < 2){
             $this->attackDelay = 0;
 
-            $ev = new EntityDamageByEntityEvent($this, $player, EntityDamageEvent::CAUSE_ENTITY_ATTACK, $this->getDamage()));
+            $ev = new EntityDamageByEntityEvent($this, $player, EntityDamageEvent::CAUSE_ENTITY_ATTACK, $this->getDamage());
             $player->attack($ev->getFinalDamage(), $ev);
         }
     }
@@ -50,11 +50,13 @@ class Slime extends JumpingMonster{
     }
 
     public function getDrops(){
-        if($this->lastDamageCause instanceof EntityDamageByEntityEvent){
-            return [Item::get(Item::SLIMEBALL, 0, mt_rand(0, 2))];
-        }
-    }
-    
+		$drops = [];
+		if($this->lastDamageCause instanceof EntityDamageByEntityEvent){
+            $drops[] = Item::get(Item::SLIMEBALL, 0, mt_rand(0, 2));
+		}
+		return $drops;
+	}
+	
     public function getKillExperience(){
         return mt_rand(1, 4);
     }
