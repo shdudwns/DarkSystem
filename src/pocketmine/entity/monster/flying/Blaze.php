@@ -20,6 +20,7 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 class Blaze extends FlyingMonster implements ProjectileSource{
+	
 	const NETWORK_ID = 43;
 
 	public $width = 0.72;

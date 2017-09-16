@@ -12,6 +12,7 @@ use pocketmine\entity\Creature;
 use pocketmine\Player;
 
 class IronGolem extends WalkingMonster{
+	
 	const NETWORK_ID = 20;
 
 	public $width = 1.9;

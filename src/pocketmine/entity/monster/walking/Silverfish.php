@@ -8,6 +8,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 
 class Silverfish extends WalkingMonster{
+	
 	const NETWORK_ID = 39;
 
 	public $width = 0.4;

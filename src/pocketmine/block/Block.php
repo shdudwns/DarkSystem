@@ -204,6 +204,8 @@ class Block extends Position implements Metadatable{
 	const BIRCH_WOODEN_STAIRS = 135;
 	const JUNGLE_WOOD_STAIRS = 136;
 	const JUNGLE_WOODEN_STAIRS = 136;
+	const COMMAND_BLOCK = 137;
+	const BEACON = 138;
 	const COBBLE_WALL = 139;
 	const STONE_WALL = 139;
 	const COBBLESTONE_WALL = 139;
@@ -274,6 +276,9 @@ class Block extends Position implements Metadatable{
     const END_BRICKS = 206;
     const END_ROD = 208;
     const END_GATEWAY = 209;
+    const SHULKER_BOX = 218;
+    const CONCRETE = 236;
+	const CONCRETE_POWDER = 237;
     const CHORUS_PLANT = 240;
     const STAINED_GLASS = 241;
 	const PODZOL = 243;
@@ -383,6 +388,7 @@ class Block extends Position implements Metadatable{
 			Block::$list[Block::FIRE] = Fire::class;
 			Block::$list[Block::MONSTER_SPAWNER] = MonsterSpawner::class;
 			Block::$list[Block::WOOD_STAIRS] = WoodStairs::class;
+			Block::$list[Block::TRAPPED_CHEST] = TrappedChest::class;
 			Block::$list[Block::CHEST] = Chest::class;
 
 			Block::$list[Block::DIAMOND_ORE] = DiamondOre::class;
@@ -492,9 +498,9 @@ class Block extends Position implements Metadatable{
 			Block::$list[Block::STONECUTTER] = Stonecutter::class;
 			Block::$list[Block::GLOWING_OBSIDIAN] = GlowingObsidian::class;
 			Block::$list[Block::NETHER_REACTOR] = NetherReactor::class;
-			//Block::$list[Block::INVISIBLE_BEDROCK] = InvisibleBedrock::class;
-			//Block::$list[Block::CONCRETE] = Concrete::class;
-			//Block::$list[Block::CONCRETE_POWDER] = ConcretePowder::class;
+			Block::$list[Block::INVISIBLE_BEDROCK] = InvisibleBedrock::class;
+			Block::$list[Block::CONCRETE] = Concrete::class;
+			Block::$list[Block::CONCRETE_POWDER] = ConcretePowder::class;
 			
 			Block::$list[Block::SLIME_BLOCK] = SlimeBlock::class;
 			
@@ -539,12 +545,19 @@ class Block extends Position implements Metadatable{
 			Block::$list[Block::PURPUR_BLOCK] = PurpurBlock::class;
 			Block::$list[Block::STAINED_GLASS] = StainedGlass::class;
 			Block::$list[Block::STAINED_GLASS_PANE] = StainedGlassPane::class;
-
+			
+			Block::$list[Block::DISPENSER] = Dispenser::class;
+			Block::$list[Block::DROPPER] = Dropper::class;
+			Block::$list[Block::BEACON] = Beacon::class;
+			Block::$list[Block::HOPPER_BLOCK] = Hopper::class;
+			Block::$list[Block::DRAGON_EGG] = DragonEgg::class;
+			Block::$list[Block::CAULDRON_BLOCK] = Cauldron::class;
+			Block::$list[Block::COMMAND_BLOCK] = CommandBlock::class;
+			
 			Block::$list[Block::REDSTONE_LAMP] = RedstoneLamp::class;
 			Block::$list[Block::REDSTONE_LAMP_ACTIVE] = RedstoneLampActive::class;
-			//Block::$list[Block::LIT_REDSTONE_LAMP] = LitRedstoneLamp::class;
 			//Block::$list[Block::POWERED_REPEATER_BLOCK] = PoweredRepeater::class;
-			//Block::$list[Block::UNPOWERED_REPEATER_BLOCK] = UnpoweredRepeater::class;
+			//$Block::$list[Block::UNPOWERED_REPEATER_BLOCK] = UnpoweredRepeater::class;
 			
 			Block::$list[Block::REDSTONE_TORCH] = RedstoneTorch::class;
 			Block::$list[Block::REDSTONE_TORCH_ACTIVE] = RedstoneTorchActive::class;
@@ -825,7 +838,7 @@ class Block extends Position implements Metadatable{
 	 *
 	 * @return float
 	 */
-	public function getBreakTime(Item $item) {
+	public function getBreakTime(Item $item){
 		static $tierMultipliers = [
 			Tool::TIER_WOODEN => 2,
 			Tool::TIER_STONE => 4,
@@ -834,28 +847,28 @@ class Block extends Position implements Metadatable{
 			Tool::TIER_GOLD => 12,
 		];
 		
-		if (!$this->canBeBrokenWith($item)) {
+		if (!$this->canBeBrokenWith($item)){
 			return -1;
 		}
 		$toolType = $this->getToolType();
 		$isSuitableForHarvest = !empty($this->getDrops($item)) || $toolType == Tool::TYPE_NONE;
 		$secondsForBreak = $this->getHardness() * ($isSuitableForHarvest ? 1.5 : 5);
-		if ($secondsForBreak == 0) {
+		if ($secondsForBreak == 0){
 			$secondsForBreak = 0.05;
 		}
 		
-		switch ($toolType) {
+		switch($toolType){
 			case Tool::TYPE_SWORD:
-				if ($item->isSword()) {
-					if ($this->id == Block::COBWEB) {
+				if ($item->isSword()){
+					if ($this->id == Block::COBWEB){
 						$secondsForBreak = $secondsForBreak / 15;
 					}
 					return $secondsForBreak;
 				}
 				break;
 			case Tool::TYPE_SHEARS:
-				if ($item->isShears()) {
-					if ($this->id == Block::WOOL) {
+				if ($item->isShears()){
+					if ($this->id == Block::WOOL){
 						$secondsForBreak = $secondsForBreak / 5;
 					} else {
 						$secondsForBreak = $secondsForBreak / 15;
@@ -865,19 +878,19 @@ class Block extends Position implements Metadatable{
 				break;
 			case Tool::TYPE_SHOVEL:
 				$tier = $item->isShovel();
-				if ($tier !== false && isset($tierMultipliers[$tier])) {
+				if ($tier !== false && isset($tierMultipliers[$tier])){
 					return $secondsForBreak / $tierMultipliers[$tier];
 				}
 				break;
 			case Tool::TYPE_PICKAXE:
 				$tier = $item->isPickaxe();
-				if ($tier !== false && isset($tierMultipliers[$tier])) {
+				if ($tier !== false && isset($tierMultipliers[$tier])){
 					return $secondsForBreak / $tierMultipliers[$tier];
 				}
 				break;
 			case Tool::TYPE_AXE:
 				$tier = $item->isAxe();
-				if ($tier !== false && isset($tierMultipliers[$tier])) {
+				if ($tier !== false && isset($tierMultipliers[$tier])){
 					return $secondsForBreak / $tierMultipliers[$tier];
 				}
 				break;

@@ -1490,7 +1490,7 @@ class Server extends DarkSystem{
 				"enable-rcon" => false,
 				"rcon.password" => substr(base64_encode(random_bytes(20)), 3, 10),
 				"auto-save" => true,
-				"auto-generate" => false,
+				"auto-generate" => true,
 				"save-player-data" => true,
 				"time-update" => true,
 				"online-mode" => false

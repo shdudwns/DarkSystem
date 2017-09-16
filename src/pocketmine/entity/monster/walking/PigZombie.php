@@ -14,6 +14,7 @@ use pocketmine\network\protocol\MobEquipmentPacket;
 use pocketmine\Player;
 
 class PigZombie extends WalkingMonster{
+	
 	const NETWORK_ID = 36;
 
 	private $angry = 0;

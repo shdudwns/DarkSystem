@@ -14,6 +14,7 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 class Spider extends WalkingMonster{
+	
 	const NETWORK_ID = 35;
 
 	public $width = 1.3;

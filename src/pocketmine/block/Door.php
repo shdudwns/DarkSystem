@@ -28,7 +28,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-
 abstract class Door extends Transparent{
 
 	public function canBeActivated(){
@@ -260,13 +259,17 @@ abstract class Door extends Transparent{
 				$this->getLevel()->setBlock($up, new Air(), true);
 			}
 		}
+		
 		$this->getLevel()->setBlock($this, new Air(), true);
-
 		return true;
 	}
-
+	
+	public function isOpened(){
+		return (($this->meta & 0b00001000) === 0);
+	}
+	
 	public function onActivate(Item $item, Player $player = null){
-		if(($this->getDamage() & 0x08) === 0x08){ //Top
+		if(($this->getDamage() & 0x08) === 0x08){
 			$down = $this->getSide(0);
 			if($down->getId() === $this->getId()){
 				$meta = $down->getDamage() ^ 0x04;

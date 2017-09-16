@@ -18,6 +18,7 @@ use pocketmine\Player;
 use pocketmine\entity\Creature;
 
 class SnowGolem extends WalkingMonster implements ProjectileSource{
+	
 	const NETWORK_ID = 21;
 
 	public $width = 0.6;
@@ -34,11 +35,11 @@ class SnowGolem extends WalkingMonster implements ProjectileSource{
 	}
 
 	public function targetOption(Creature $creature, float $distance){
-		return !($creature instanceof Player) && $creature->isAlive() && $distance <= 50;
+		return !($creature instanceof Player) && $creature->isAlive() && $distance <= 40;
 	}
 
 	public function attackEntity(Entity $player){
-		if($this->attackDelay > 23  && mt_rand(1, 32) < 4 && $this->distanceSquared($player) <= 55){
+		if($this->attackDelay > 23  && mt_rand(1, 32) < 4 && $this->distanceSquared($player) <= 45){
 			$this->attackDelay = 0;
 		
 			$f = 1.2;

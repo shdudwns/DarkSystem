@@ -25,6 +25,7 @@ class MagmaCube extends Slime
 	public $width = 0.6;
 	public $length = 0.6;
 	public $height = 1.8;
+	
 	public $maxhealth = 16
 ;	
 	public function getName(): string
@@ -54,7 +55,7 @@ class MagmaCube extends Slime
 	public function getDrops()
 	{
 		$drops = [];
-		if($this->getSlimeSize() > 1){
+		if(DATA_SLIME_SIZE > 1){
 			$ev = $this->getLastDamageCause();
 			$looting = $ev instanceof EntityDamageByEntityEvent ? $ev->getDamager() instanceof Player ? $ev->getDamager()->getInventory()->getItemInHand()->getEnchantmentLevel(Enchantment::TYPE_WEAPON_LOOTING) : 0 : 0;
 

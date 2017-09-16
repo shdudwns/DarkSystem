@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Item;
 
 class Enderman extends WalkingMonster{
+	
 	const NETWORK_ID = 38;
 
 	public $width = 0.72;

@@ -22,6 +22,7 @@ use pocketmine\nbt\tag\StringTag;
 use pocketmine\utils\ChunkException;
 
 abstract class Tile extends Position{
+	
 	const BED = "Bed";
 	const SIGN = "Sign";
 	const SKULL = "Skull";

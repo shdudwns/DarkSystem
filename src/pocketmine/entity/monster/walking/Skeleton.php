@@ -22,6 +22,7 @@ use pocketmine\network\protocol\MobEquipmentPacket;
 use pocketmine\Player;
 
 class Skeleton extends WalkingMonster implements ProjectileSource{
+	
 	const NETWORK_ID = 34;
 
 	public $width = 0.65;
@@ -54,8 +55,7 @@ class Skeleton extends WalkingMonster implements ProjectileSource{
 					new FloatTag("", $pitch)
 				]),
 			]);
-
-			/** @var Projectile $arrow */
+			
 			$arrow = Entity::createEntity("Arrow", $this->level, $nbt, $this);
 
 			$ev = new EntityShootBowEvent($this, Item::get(Item::ARROW, 0, 1), $arrow, $f);

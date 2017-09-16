@@ -20,6 +20,7 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 class Vex extends FlyingMonster implements ProjectileSource{
+	
 	const NETWORK_ID = 105;
 
 	public $width = 0.72;
@@ -28,13 +29,12 @@ class Vex extends FlyingMonster implements ProjectileSource{
 
 	public function initEntity(){
 		parent::initEntity();
-
-		$this->fireProof = true;
+		
 		$this->setDamage([0, 0, 0, 0]);
 	}
 
 	public function getName(){
-		return "Blaze";
+		return "Vex";
 	}
 
 	protected function checkTarget(){
@@ -185,7 +185,7 @@ class Vex extends FlyingMonster implements ProjectileSource{
 
 	public function getDrops(){
 		if($this->lastDamageCause instanceof EntityDamageByEntityEvent){
-			return [Item::get(Item::GLOWSTONE_DUST, 0, mt_rand(0, 2))];
+			return [Item::get(Item::IRON_SWORD, 0, mt_rand(0, 2))];
 		}
 		return [];
 	}

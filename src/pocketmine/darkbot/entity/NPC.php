@@ -525,14 +525,14 @@ class NPC extends Human{
 		$this->server->getDarkBotAI->spaw($this->getNameTag(), $this->level);
 	}*/
 	
-	public function attack($damage, EntityDamageEvent $source){
+	/*public function attack($damage, EntityDamageEvent $source){
 		if(!$source->isCancelled() && $source instanceof EntityDamageByEntityEvent){
 			$dmg = $source->getDamager();
 			if($dmg instanceof Player){
 				$this->target = $dmg;
 				parent::attack($damage, $source);
 				$this->knockbackTicks = 10;
-	 }
-  }
-}
+			}
+		}
+	}*/
 }

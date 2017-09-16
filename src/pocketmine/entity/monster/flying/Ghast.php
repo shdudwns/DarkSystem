@@ -15,6 +15,7 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 class Ghast extends FlyingMonster implements ProjectileSource{
+	
 	const NETWORK_ID = 41;
 
 	public $width = 4;

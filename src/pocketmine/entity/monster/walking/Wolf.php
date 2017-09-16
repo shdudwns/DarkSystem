@@ -10,6 +10,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\entity\Creature;
 
 class Wolf extends WalkingMonster{
+	
 	const NETWORK_ID = 14;
 
 	private $angry = 0;

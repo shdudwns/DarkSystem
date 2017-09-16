@@ -2032,6 +2032,20 @@ class Player /*extends OnlinePlayer*/ extends Human implements DSPlayerInterface
 					foreach(explode("\n", $packet->message) as $message){
 						if($this->server->getName() == "DarkSystem"){
 							switch($message){
+								/* Korean */
+								case "안녕":
+								case "darkbot 안녕":
+								$this->server->broadcastMessage($dbotprefix . "안녕");
+								break;
+								case "잘 지냈어요":
+								case "너는 어떻게 지내니":
+								case "안녕하십니까":
+								case "darkbot 잘 지냈어요":
+								case "darkbot 너는 어떻게 지내니":
+								case "darkbot 안녕하십니까":
+								$this->server->broadcastMessage($dbotprefix . "난 괜찮아");
+								break;
+								/* Turkish */
 								case "dbot gm1":
 								case "gm1 dbot":
 								case "darkbot gm1":

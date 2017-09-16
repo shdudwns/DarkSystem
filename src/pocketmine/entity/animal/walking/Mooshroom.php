@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\entity\Creature;
 
 class Mooshroom extends WalkingAnimal{
+	
 	const NETWORK_ID = 16;
 
 	public $width = 1.45;

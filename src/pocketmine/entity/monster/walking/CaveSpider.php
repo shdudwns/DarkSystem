@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Item;
 
 class CaveSpider extends WalkingMonster{
+	
 	const NETWORK_ID = 40;
 
 	public $width = 0.9;
