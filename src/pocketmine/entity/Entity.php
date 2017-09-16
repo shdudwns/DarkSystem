@@ -14,7 +14,7 @@ namespace pocketmine\entity;
 use pocketmine\block\Block;
 use pocketmine\block\Water;
 use pocketmine\darkbot\entity\NPC;
-use pocketmine\entity\{Arrow, BlazeFireball, Camera, Car, Item as DroppedItem, Egg, EnderCrystal, EnderPearl, FallingSand, FishingHook, GhastFireball, LeashKnot, Lightning, Minecart, MinecartChest, MinecartHopper, MinecartTNT, Painting, PrimedTNT, Snowball, ThrownExpBottle, ThrownPotion, XPOrb, Herobrine, Human, Bat, BlueWitherSkull, Boat, Dragon, ElderGuardian, EnderDragon, Endermite, EvocationFangs, Giant, Guardian, Llama, PolarBear, Slime, Shulker, ShulkerBullet, SkeletonHorse, Squid, Vindicator, Witch, Wither, WitherSkeleton, ZombieHorse};
+use pocketmine\entity\{Arrow, BlazeFireball, Camera, Car, Item as DroppedItem, Egg, EnderCrystal, EnderPearl, FallingSand, FishingHook, GhastFireball, LeashKnot, Lightning, Minecart, MinecartChest, MinecartHopper, MinecartTNT, Painting, PrimedTNT, Snowball, ThrownExpBottle, ThrownPotion, XPOrb, Herobrine, Human, Bat, BlueWitherSkull, Boat, Dragon, ElderGuardian, EnderDragon, Endermite, EvocationFangs, Giant, Guardian, Llama, PolarBear, Shulker, ShulkerBullet, SkeletonHorse, Squid, Vindicator, Witch, Wither, WitherSkeleton, ZombieHorse};
 use pocketmine\entity\animal\walking\{Chicken, Cow, Donkey, Horse, Mooshroom, Mule, Ocelot, Pig, Rabbit, Sheep, Villager};
 use pocketmine\entity\monster\flying\{Blaze, Ghast, Vex};
 use pocketmine\entity\monster\jumping\{MagmaCube, Slime};
