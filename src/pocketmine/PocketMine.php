@@ -135,10 +135,11 @@ namespace pocketmine{
 	$autoloader->addPath(\pocketmine\PATH . "src");
 	$autoloader->addPath(\pocketmine\PATH . "src" . DIRECTORY_SEPARATOR . "spl");
 	$autoloader->register(true);
-
+	
 	set_time_limit(0);
 
 	gc_enable();
+	
 	error_reporting(-1);
 	
 	ini_set("allow_url_fopen", 1);
@@ -150,10 +151,21 @@ namespace pocketmine{
 	
 	define('pocketmine\START_TIME', microtime(true));
 
-	$opts = getopt("", ["data:", "plugins:", "no-wizard", "enable-profiler"]);
-
+	$opts = getopt("", ["data:", "eklentiler:", "no-setup", "enable-profiler"]);
+	
 	define('pocketmine\DATA', isset($opts["data"]) ? $opts["data"] . DIRECTORY_SEPARATOR : \getcwd() . DIRECTORY_SEPARATOR);
-	define('pocketmine\PLUGIN_PATH', isset($opts["eklentiler"]) ? $opts["eklentiler"] . DIRECTORY_SEPARATOR : \getcwd() . DIRECTORY_SEPARATOR . "eklentiler" . DIRECTORY_SEPARATOR);
+	
+	$lang = "Bilinmeyen";
+	if(!file_exists(\pocketmine\DATA . "sunucu.properties") and !isset($opts["no-setup"])){
+		$setup = new Setup();
+		$lang = $setup->getDefaultLang();
+	}
+	
+	if($lang == "tr" || "tur"){
+		define('pocketmine\PLUGIN_PATH', isset($opts["eklentiler"]) ? $opts["eklentiler"] . DIRECTORY_SEPARATOR : \getcwd() . DIRECTORY_SEPARATOR . "eklentiler" . DIRECTORY_SEPARATOR);
+	}else{
+		define('pocketmine\PLUGIN_PATH', isset($opts["eklentiler"]) ? $opts["eklentiler"] . DIRECTORY_SEPARATOR : \getcwd() . DIRECTORY_SEPARATOR . "plugins" . DIRECTORY_SEPARATOR);
+	}
 
 	Terminal::init();
 
@@ -250,12 +262,6 @@ namespace pocketmine{
 	@define("ENDIANNESS", (pack("d", 1) === "\77\360\0\0\0\0\0\0" ? Binary::BIG_ENDIAN : Binary::LITTLE_ENDIAN));
 	@define("INT32_MASK", is_int(0xffffffff) ? 0xffffffff : -1);
 	@ini_set("opcache.mmap_base", bin2hex(random_bytes(8)));
-
-	$lang = "Bilinmeyen";
-	if(!file_exists(\pocketmine\DATA . "sunucu.properties") and !isset($opts["no-wizard"])){
-		$setup = new Setup();
-		$lang = $setup->getDefaultLang();
-	}
 	
 	ThreadManager::init();
 	

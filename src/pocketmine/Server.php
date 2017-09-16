@@ -740,7 +740,11 @@ class Server extends DarkSystem{
 	 */
 	public function getOfflinePlayerData($name){
 		$name = strtolower($name);
-		$path = $this->getDataPath() . "oyuncular/";
+		if($this->language == "tr" || "tur"){
+		    $path = $this->getDataPath() . "oyuncular/";
+		}else{
+			$path = $this->getDataPath() . "players/";
+		}
 		if(file_exists($path . "$name.dat")){
 			try{
 				$nbt = new NBT(NBT::BIG_ENDIAN);
@@ -801,10 +805,19 @@ class Server extends DarkSystem{
 		$nbt = new NBT(NBT::BIG_ENDIAN);
 		try{
 			$nbt->setData($nbtTag);
-			if($async){
-				$this->scheduler->scheduleAsyncTask(new FileWriteTask($this->getDataPath() . "oyuncular/" . strtolower($name) . ".dat", $nbt->writeCompressed()));
+			
+			if($this->language == "tr" || "tur"){
+			    if($async){
+				    $this->scheduler->scheduleAsyncTask(new FileWriteTask($this->getDataPath() . "oyuncular/" . strtolower($name) . ".dat", $nbt->writeCompressed()));
+			    }else{
+				    file_put_contents($this->getDataPath() . "oyuncular/" . strtolower($name) . ".dat", $nbt->writeCompressed());
+			    }
 			}else{
-				file_put_contents($this->getDataPath() . "oyuncular/" . strtolower($name) . ".dat", $nbt->writeCompressed());
+			    if($async){
+				    $this->scheduler->scheduleAsyncTask(new FileWriteTask($this->getDataPath() . "players/" . strtolower($name) . ".dat", $nbt->writeCompressed()));
+			    }else{
+				    file_put_contents($this->getDataPath() . "players/" . strtolower($name) . ".dat", $nbt->writeCompressed());
+			    }
 			}
 		}catch(\Exception $e){
 			$this->konsol->critical($this->getLanguage()->translateString("pocketmine.data.saveError", [$name, $e->getMessage()]));
@@ -992,9 +1005,13 @@ class Server extends DarkSystem{
 			$this->konsol->notice($this->getLanguage()->translateString("pocketmine.level.notFound", [$name]));
 			return false;
 		}
-
-		$path = $this->getDataPath() . "dunyalar/" . $name . "/";
-
+		
+		if($this->language == "tr" || "tur"){
+		    $path = $this->getDataPath() . "dunyalar/" . $name . "/";
+		}else{
+			$path = $this->getDataPath() . "worlds/" . $name . "/";
+		}
+		
 		$provider = LevelProviderManager::getProvider($path);
 
 		if($provider === null){
@@ -1040,7 +1057,12 @@ class Server extends DarkSystem{
 		}
 
 		try{
-			$path = $this->getDataPath() . "dunyalar/" . $name . "/";
+			if($this->language == "tr" || "tur"){
+			    $path = $this->getDataPath() . "dunyalar/" . $name . "/";
+			}else{
+				$path = $this->getDataPath() . "worlds/" . $name . "/";
+			}
+			
 			$provider::generate($path, $name, $seed, $options);
 
 			$level = new Level($this, $name, $path, $provider);
@@ -1096,7 +1118,12 @@ class Server extends DarkSystem{
 			return false;
 		}
 		
-		$path = $this->getDataPath() . "dunyalar/" . $name . "/";
+		if($this->language == "tr" || "tur"){
+		    $path = $this->getDataPath() . "dunyalar/" . $name . "/";
+		}else{
+			$path = $this->getDataPath() . "worlds/" . $name . "/";
+		}
+		
 		if(!($this->getLevelByName($name) instanceof Level)){
 			if(LevelProviderManager::getProvider($path) === null){
 				return false;
@@ -1338,7 +1365,11 @@ class Server extends DarkSystem{
 	}
 	
 	public function getCrashPath(){
-		return $this->dataPath . "cokme-arsivleri/";
+		if($this->language == "tr" || "tur"){
+		    return $this->dataPath . "cokme-arsivleri/";
+		}else{
+			return $this->dataPath . "crashdumps/";
+		}
 	}
 	
 	public static function getInstance(){
@@ -1416,6 +1447,7 @@ class Server extends DarkSystem{
 		$this->filePath = $filePath;
 		$this->dbot = new DarkBot($this);
 		try{
+			if($this->language == "tr" || "tur"){
 			if(!file_exists($dataPath . "dunyalar/")){
 				mkdir($dataPath . "dunyalar/", 0777);
 			}
@@ -1435,7 +1467,27 @@ class Server extends DarkSystem{
 			if(!file_exists($pluginPath)){
 				mkdir($pluginPath, 0777);
 			}
+			}else{
+			if(!file_exists($dataPath . "worlds/")){
+				mkdir($dataPath . "worlds/", 0777);
+			}
+
+			if(!file_exists($dataPath . "players/")){
+				mkdir($dataPath . "players/", 0777);
+			}
 			
+			if(!file_exists($dataPath . "crashdumps/")){
+				mkdir($dataPath . "crashdumps/", 0777);
+			}
+			
+			if(!file_exists($dataPath . "achievements/")){
+				mkdir($dataPath . "achievements/", 0777);
+			}
+			
+			if(!file_exists($pluginPath)){
+				mkdir($pluginPath, 0777);
+			}
+			}
 			if(\Phar::running(true) === ""){
 			   $packages = "src";
 			}else{
@@ -1570,7 +1622,6 @@ class Server extends DarkSystem{
 			if(($poolSize = $this->getProperty("settings.async-workers", "auto")) === "auto"){
 				$poolSize = ServerScheduler::$WORKERS;
 				$processors = Utils::getCoreCount() - 2;
-
 				if($processors > 0){
 					$poolSize = max(1, $processors);
 				}
@@ -1601,10 +1652,10 @@ class Server extends DarkSystem{
 			$this->entityMetadata = new EntityMetadataStore();
 			$this->playerMetadata = new PlayerMetadataStore();
 			$this->levelMetadata = new LevelMetadataStore();
-
+			
+			if($this->language == "tr" || "tur"){
 			$this->operators = new Config($this->dataPath . "yoneticiler.json", Config::JSON);
 			$this->whitelist = new Config($this->dataPath . "beyaz-liste.json", Config::JSON);
-			
 			if(file_exists($this->dataPath . "engelli.txt") && !file_exists($this->dataPath . "engelli-oyuncular.txt")){
 				@rename($this->dataPath . "engelli.txt", $this->dataPath . "engelli-oyuncular.txt");
 			}
@@ -1618,10 +1669,26 @@ class Server extends DarkSystem{
 			@touch($this->dataPath . "engelli-CIDler.txt");
 			$this->banByCID = new BanList($this->dataPath . "engelli-CIDler.txt");
 			$this->banByCID->load();
-
+			}else{
+			$this->operators = new Config($this->dataPath . "ops.txt", Config::ENUM);
+			$this->whitelist = new Config($this->dataPath . "white-list.txt", Config::ENUM);
+			if(file_exists($this->dataPath . "banned.txt") and !file_exists($this->dataPath . "banned-players.txt")){
+				@rename($this->dataPath . "banned.txt", $this->dataPath . "banned-players.txt");
+			}
+			@touch($this->dataPath . "banned-players.txt");
+			$this->banByName = new BanList($this->dataPath . "banned-players.txt");
+			$this->banByName->load();
+			@touch($this->dataPath . "banned-ips.txt");
+			$this->banByIP = new BanList($this->dataPath . "banned-ips.txt");
+			$this->banByIP->load();
+			@touch($this->dataPath . "banned-cids.txt");
+			$this->banByCID = new BanList($this->dataPath . "banned-cids.txt");
+			$this->banByCID->load();
+			}
+			
 			$this->maxPlayers = $this->getConfigInt("max-players", 100);
 			$this->setAutoSave($this->getConfigBoolean("auto-save", true));
-			$this->setAutoGenerate($this->getConfigBoolean("auto-generate", false));
+			$this->setAutoGenerate($this->getConfigBoolean("auto-generate", true));
 			$this->setSavePlayerData($this->getConfigBoolean("save-player-data", true));
 			
 			$this->useAnimal = $this->getConfigBoolean("spawn-animals", false);

@@ -21,13 +21,13 @@
 
 namespace pocketmine\entity;
 
-
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\network\Network;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\Player;
 
 class Villager extends Creature implements NPC, Ageable{
+	
 	const PROFESSION_FARMER = 0;
 	const PROFESSION_LIBRARIAN = 1;
 	const PROFESSION_PRIEST = 2;
@@ -71,8 +71,6 @@ class Villager extends Creature implements NPC, Ageable{
 	}
 
 	/**
-	 * Sets the villager profession
-	 *
 	 * @param $profession
 	 */
 	public function setProfession($profession){

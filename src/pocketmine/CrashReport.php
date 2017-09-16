@@ -31,11 +31,23 @@ class CrashReport{
 	public function __construct(Server $server){
 		$this->time = time();
 		$this->server = $server;
-		if(!is_dir($this->server->getDataPath() . "cokme-arsivleri")){
-			mkdir($this->server->getDataPath() . "cokme-arsivleri");
+		
+		if($this->server->language == "tr" || "tur"){
+		    if(!is_dir($this->server->getDataPath() . "cokme-arsivleri")){
+			    mkdir($this->server->getDataPath() . "cokme-arsivleri");
+			}
+		}else{
+			if(!is_dir($this->server->getDataPath() . "crashdumps")){
+			    mkdir($this->server->getDataPath() . "crashdumps");
+			}
 		}
 		
-		$this->path = $this->server->getCrashPath() . "CokmeArsivi_" . date("D_M_j-H.i.s-T_Y", $this->time) . ".log";
+		if($this->server->language == "tr" || "tur"){
+		    $this->path = $this->server->getCrashPath() . "CokmeArsivi_" . date("D_M_j-H.i.s-T_Y", $this->time) . ".log";
+		}else{
+			$this->path = $this->server->getCrashPath() . "CrashDump_" . date("D_M_j-H.i.s-T_Y", $this->time) . ".log";
+		}
+		
 		$this->fp = @fopen($this->path, "wb");
 		if(!is_resource($this->fp)){
 			throw new \RuntimeException("Çökme Arşivi Oluşturulamadı!");

@@ -26,8 +26,8 @@ class MagmaCube extends Slime
 	public $length = 0.6;
 	public $height = 1.8;
 	
-	public $maxhealth = 16
-;	
+	public $maxhealth = 16;
+	
 	public function getName(): string
 	{
 		return "MagmaCube";
@@ -37,7 +37,7 @@ class MagmaCube extends Slime
 	{
 		$pk = new AddEntityPacket();
 		$pk->eid = $this->getId();
-		$pk->type = LavaSlime::NETWORK_ID;
+		$pk->type = MagmaCube::NETWORK_ID;
 		$pk->x = $this->x;
 		$pk->y = $this->y;
 		$pk->z = $this->z;

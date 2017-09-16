@@ -8,6 +8,7 @@ use pocketmine\entity\monster\FlyingMonster;
 use pocketmine\entity\projectile\FireBall;
 use pocketmine\entity\Creature;
 use pocketmine\entity\Entity;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\ProjectileLaunchEvent;
 use pocketmine\item\Item;
