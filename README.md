@@ -20,6 +20,14 @@
 - [ ] **Map**
 - [ ] **Horse**
 - [ ] **Throwing Potions**
+- [ ] **Riding Mincart and Boat**
+- [ ] **Fully Redstone System**
+- [ ] **Multi-core**
+- [ ] **Pistons**
+- [ ] **Fully Multi-Language**
+- [ ] **Mobspawner**
+- [ ] **ItemFrame**
+- [ ] **Auto lag cleaner**
 
 # Known Bugs:
 - When DarkSystem crash, server does not stop.
