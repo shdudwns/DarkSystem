@@ -2417,6 +2417,7 @@ class Server extends DarkSystem{
 				}
 			}
 		}
+		if($this->language == "tr" || "tur"){
 		if(($this->tickCounter % 2975) === 0 && $dbotcheck = "§aAktif"){
 			switch(mt_rand(1, 5)){
 				case 1:
@@ -2437,6 +2438,7 @@ class Server extends DarkSystem{
 				default;
 				break;
 			}
+		}
 		}
 		/*if(($this->tickCounter % 6375) === 0){
 			$this->clearChat();
