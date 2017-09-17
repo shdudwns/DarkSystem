@@ -25,7 +25,7 @@
 - [ ] **Multi-core**
 - [ ] **Pistons**
 - [ ] **Fully Multi-Language**
-- [ ] **Mobspawner**
+- [ ] **Mob Spawner**
 - [ ] **ItemFrame**
 - [ ] **Auto lag cleaner**
 
