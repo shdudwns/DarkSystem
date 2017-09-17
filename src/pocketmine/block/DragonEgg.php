@@ -26,7 +26,7 @@ use pocketmine\event\block\BlockTeleportEvent;
 use pocketmine\item\Item;
 use pocketmine\level\Position;
 use pocketmine\level\sound\GenericSound;
-use pocketmine\network\mcpe\protocol\LevelEventPacket;
+use pocketmine\network\protocol\LevelEventPacket;
 use pocketmine\Player;
 
 class DragonEgg extends Fallable {
