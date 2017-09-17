@@ -2040,9 +2040,13 @@ class Player /*extends OnlinePlayer*/ extends Human implements DSPlayerInterface
 								case "잘 지냈어요":
 								case "너는 어떻게 지내니":
 								case "안녕하십니까":
+								case "스폰":
+								$this->teleport($this->server->getDefaultLevel()->getSafeSpawn());
+								break;
 								case "darkbot 잘 지냈어요":
 								case "darkbot 너는 어떻게 지내니":
 								case "darkbot 안녕하십니까":
+								case "darkbot 스폰으로 이동 하였습니다":
 								$this->server->broadcastMessage($dbotprefix . "난 괜찮아");
 								break;
 								/* Turkish */
